@@ -10,6 +10,14 @@
 						<h1>
 							{{ profile.user.username }}'s PROFILE
 						</h1>
+						<br>
+						{% if twists %}
+							{% for twist in twists %}
+								<div class="alert alert-dark" role="alert">
+									{{ twist }}
+								</div>
+							{% endfor %}
+						{% endif %}
 				</div>
 				
 				<div class="col-4">

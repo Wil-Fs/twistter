@@ -1,7 +1,12 @@
 {% extends 'twistter/base.html' %}
 {% block content %}
-	<h1>
-		{{ text }}
-	</h1>
+	
+	<h1>Twists</h1>
+	<br>
+	{% for twist in twists %}
+		<div class="alert alert-dark" role="alert">
+			{{ twist }}
+		</div>
+	{% endfor %}
 {% endblock %}
 
