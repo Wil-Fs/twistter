@@ -5,9 +5,22 @@ from ..models import Profile
 
 def profile(request, user):
     if request.user.is_authenticated:
-        profiles = Profile.objects.filter(user_id=user)
+        profile = Profile.objects.get(user_id=user)
+
+        #Post form logic
+        if request.method == "POST":
+            #Get current user ID
+            current_user_profile = request.user.profile
+            #Get form data
+            action = request.POST['follow']
+            #Decide follow or unfollow
+            if action == "unfollow":
+                current_user_profile.follows.remove(profile)
+            elif action == "follow":
+                current_user_profile.follows.add(profile)
+            current_user_profile.save()
         return render(request, 'twistter/profile.html', {
-            'profiles': profiles
+            'profile': profile
         })
     else:
         messages.warning(request, 'Você precisa está logado para acessar este conteúdo!')
