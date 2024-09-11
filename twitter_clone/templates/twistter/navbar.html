@@ -1,4 +1,5 @@
-
+{% if user.is_authenticated %}
+	
 	<nav class="navbar bg-body-tertiary fixed-top">
 	  <div class="container-fluid">
 	    <a class="navbar-brand" href="{% url 'home' %}">Twistter</a>
@@ -45,3 +46,18 @@
 	    </div>
 	  </div>
 	</nav>
+
+{% else %}
+
+	
+	<nav class="navbar bg-body-tertiary fixed-top">
+	  <div class="container-fluid row">
+	    <a class="navbar-brand col-8" href="{% url 'home' %}">Twistter</a>
+		<button class="navbar-toggler col-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+	      <a class="nav-link active" aria-current="page" href="#">New user</a>
+	    </button>
+	  </div>
+	</nav>
+
+
+{% endif %}

@@ -1,12 +1,31 @@
 {% extends 'twistter/base.html' %}
 {% block content %}
 	
-	<h1>Twists</h1>
-	<br>
-	{% for twist in twists %}
-		<div class="alert alert-dark" role="alert">
-			{{ twist }}
+	<div class="container text-center">
+		<div class="row">
+			<div class="col-8">
+				<h1>Twists</h1>
+				<br>
+				{% for twist in twists %}
+					<div class="alert alert-dark" role="alert">
+						{{ twist.body }}
+						<br/>
+						<small class="text-muted">
+							{{ twist.created_at }} By @{{ twist.user.username|lower }}
+						</small>
+					</div>
+				{% endfor %}
+			</div>
+			
+			<div class="col-4">
+				<form method="POST">
+					{% csrf_token %}
+					{{ form.as_p }}
+					<button type="submit" class="btn btn-outline-secondary">Twist!</button>
+				</form>
+			</div>
 		</div>
-	{% endfor %}
+		
+	</div>
 {% endblock %}
 
