@@ -14,4 +14,4 @@ class TwistForm(forms.ModelForm):
 
     class Meta:
         model = Twist
-        exclude = ('user',)
+        exclude = ('user', 'likes',)
