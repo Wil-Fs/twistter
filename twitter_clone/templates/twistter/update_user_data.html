@@ -1,0 +1,20 @@
+{% extends 'twistter/base.html' %}
+{% block content %}
+	<div class="col-md-6 offset-md-3">
+		<h1> Update {{ user.username }}'s data  </h1>
+		<form method="POST" enctype="multipart/form-data">
+			<br>
+			{% csrf_token %}
+			{{ user_form.as_p }} <br>
+			<br>
+			<button type="submit" class="btn btn-outline-primary">Update</button>
+			<button type="button" class="btn btn-outline-warning">
+				<a href="{% url 'profile' request.user.id%}">
+					Cancel
+				</a>
+			</button>
+		</form>
+		<br>
+	</div>
+{% endblock %}
+
