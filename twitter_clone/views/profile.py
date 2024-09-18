@@ -3,7 +3,7 @@ from django.contrib import messages
 from ..models import Profile, Twist
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from ..forms import SignUpForm, ProfilePicForm
+from ..forms import SignUpForm, ProfilePicForm, UpdateProfileForm, UpdateDataProfileForm
 
 
 def profile(request, user):
@@ -36,7 +36,7 @@ def update_user(request):
     if request.user.is_authenticated:
         current_user = User.objects.get(id=request.user.id)
         current_profile = Profile.objects.get(user__id=request.user.id)
-        user_form = SignUpForm(request.POST or None, request.FILES or None, instance=current_user)
+        user_form = UpdateProfileForm(request.POST or None, request.FILES or None, instance=current_user)
         profile_user_form = ProfilePicForm(request.POST or None, request.FILES or None, instance=current_profile)
 
         if user_form.is_valid() and profile_user_form.is_valid():
@@ -47,6 +47,29 @@ def update_user(request):
             return redirect('home')
 
         return render(request, 'twistter/update_user.html', {
+            'user_form': user_form,
+            'profile_user_form': profile_user_form
+        })
+    else:
+        messages.warning(request, 'You must be logged in to view that page!')
+        return redirect('home')
+
+
+def update_user_data(request):
+    if request.user.is_authenticated:
+        current_user = User.objects.get(id=request.user.id)
+        current_profile = Profile.objects.get(user__id=request.user.id)
+        user_form = UpdateDataProfileForm(request.POST or None, request.FILES or None, instance=current_user)
+        profile_user_form = ProfilePicForm(request.POST or None, request.FILES or None, instance=current_profile)
+
+        if user_form.is_valid() and profile_user_form.is_valid():
+            user_form.save()
+            profile_user_form.save()
+            login(request, current_user)
+            messages.warning(request, f'@{request.user.username.lower()}, your profile has been updated!')
+            return redirect('home')
+
+        return render(request, 'twistter/update_user_data.html', {
             'user_form': user_form,
             'profile_user_form': profile_user_form
         })

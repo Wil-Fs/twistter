@@ -6,7 +6,7 @@ class TwistForm(forms.ModelForm):
         widget=forms.widgets.Textarea(
             attrs={
                 "placeholder": "Enter Your Twist!!",
-                "class": "form-control",
+                "class": "form-control no_resize",
             }
         ),
         label="",

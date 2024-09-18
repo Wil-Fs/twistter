@@ -2,12 +2,32 @@
 {% load static %}
 {% block content %}
 	
-	<div class="container text-center">
+	<div class="container">
 		<div class="row">
-			<div class="col-8">
-				<h1>Twists</h1>
+			<div class="col-12">
+				<h1>Search</h1>
 				<br>
-				{% for twist in twists %}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<form method="POST">
+					{% csrf_token %}
+					<div>
+						<input type="text" name="search" class="form-control">
+					</div>
+					<br>
+					<button type="submit" class="btn btn-primary">Search Twist</button>
+				</form>
+				<br>
+				<br>
+				
+				{% if search %}
+					<h2>You Searched For: {{ search }}</h2>
+				{% endif %}
+				
+				
+				{% for twist in searched %}
 					<div class="twist_container">
 						<div class="container">
 							<div class="row">
@@ -57,16 +77,7 @@
 					</div>
 				{% endfor %}
 			</div>
-			
-			<div class="col-4">
-				<form method="POST">
-					{% csrf_token %}
-					{{ form.as_p }}
-					<button type="submit" class="btn btn-outline-primary">Twist!</button>
-				</form>
-			</div>
 		</div>
-		
 	</div>
 {% endblock %}
 
