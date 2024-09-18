@@ -1,32 +1,171 @@
+/* layout_all */
+
 * {
-    margin:0;
-    padding:0;
-    box-size:border-box;
+    margin: 0;
+    padding: 0;
+    box-size: border-box;
     resize: none;
     list-style: none;
-    background-color: #000;
+    background-color: #fff;
 }
 
-.profile_img {
-    max-width: 100px;
-    width: 100%;
-    border-radius: 50%;
-    padding: 0;
+/* twist_style */
+
+.decoration_none {
+    text-decoration: none;
 }
+
+.twist_like {
+    text-decoration: none;
+}
+
+.twist_share {
+    text-decoration: none;
+}
+
+.twist_delete {
+    text-decoration: none;
+}
+
+.twist_edit {
+    text-decoration: none;
+}
+
+.twist_container {
+    width: 100%;
+    max-width: 800px;
+    min-height: 124px;
+    height: auto;
+    margin: 20px 0 0 0;
+    background-color: black;
+}
+
+.twist_body {
+}
+
+.twist_text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 20px;
+    padding: 8px;
+}
+
+twist_like_box {
+    margin: 10px 20px;
+}
+
+/* profile_picture */
+
 
 .profile_img_nav {
     max-width: 34px;
     width: 100%;
-    border-radius: 50%;
     padding: 0;
+
 }
 
 .profile_img_btn {
     border: none;
     padding: 0;
-    border-radius: 50%;
 }
 
 .profile_name {
     margin-left: 10px;
 }
+
+
+/* edit_twist.html */
+
+/* followers.html */
+
+/* follows.html */
+
+/* home.html */
+
+/* login.html */
+
+/* navbar.html */
+
+/* profile.html */
+
+text-area {
+    resize: none;
+}
+
+.background_profile {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 200px;
+    content:'';
+}
+
+.profile_img {
+    max-width: 110px;
+    width: 100%;
+    height: 106px;
+    margin-bottom: 20px;
+}
+
+.twist_profile_img {
+    max-width: 58px;
+    width: 100%;
+    height: 40px;
+    margin: 10px 6px;
+}
+
+.title_profile {
+    background-color: transparent;
+    text-transform: capitalize;
+}
+
+.sub_title_profile {
+    font-size: 15px;
+    text-transform: lowercase;
+}
+
+.container_info_box {
+   position: relative;
+   height: 400px;
+   width: 100%;
+}
+
+.profile_info_box {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 31px;
+    top: 134px;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
+.follow_box {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    max-width: 816px;
+    height: 50%;
+}
+
+.follow_buttom {
+    height: 52px;
+    margin: 22px 16px;
+}
+
+.profile_bio {
+    margin: 0px 0px 26px 0;
+}
+
+/* profile_list.html */
+
+/* register.html */
+
+/* search_twist.html */
+
+/* search_user.html */
+
+/* update_user.html */
+
+/* update_user_data.html */

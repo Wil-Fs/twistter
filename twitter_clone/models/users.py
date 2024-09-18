@@ -12,10 +12,12 @@ class Profile(models.Model):
 
     date_modified = models.DateTimeField(User, auto_now=True)
     profile_image = models.ImageField(null=True, blank=True, upload_to='images/')
+    profile_background = models.ImageField(null=True, blank=True, upload_to='images/')
     bio = models.CharField(null=True, blank=True, max_length=500)
 
     def __str__(self):
         return self.user.username
+
 
 #Create Profile when new User signs up
 @receiver(post_save, sender=User)
