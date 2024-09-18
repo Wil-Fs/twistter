@@ -1,7 +1,14 @@
 
 
 .profile_img {
-    max-width: 32px;
+    max-width: 100px;
+    width: 100%;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.profile_img_nav {
+    max-width: 34px;
     width: 100%;
     border-radius: 50%;
     padding: 0;

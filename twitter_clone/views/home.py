@@ -45,3 +45,15 @@ def twist_share(request, pk):
         return redirect(request.META.get('HTTP_REFERER'))
     else:
         return redirect('login')
+
+def delete_twist(request, pk):
+    if request.user.is_authenticated:
+        twist = get_object_or_404(Twist, id=pk)
+        if request.user.username == twist.user.username:
+            twist.delete()
+            messages.warning(request, 'Your Twist has been deleted!')
+            return redirect(request.META.get('HTTP_REFERER'))
+        else:
+            redirect('home')
+    else:
+        return redirect('login')

@@ -32,16 +32,21 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-6">
+								<div class="col-4">
 									{% if user in twist.likes.all %}
 											<a href="{% url 'twist-like' twist.id %}">Unlike:</a> {{ twist.number_of_likes }}
 									{% else %}
 											<a href="{% url 'twist-like' twist.id %}">Like:</a> {{ twist.number_of_likes }}
 									{% endif %}
 								</div>
-								<div class="col-6">
+								<div class="col-4">
 									<a href="{% url 'twist-share' twist.id %}">Share:</a>
 								</div>
+								{% if request.user.username == twist.user.username %}
+									<div class="col-4">
+										<a href="{% url 'delete-twist' twist.id %}">Delete:</a>
+									</div>
+								{% endif %}
 							</div>
 						</div>
 					</div>

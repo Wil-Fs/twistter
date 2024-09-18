@@ -1,0 +1,45 @@
+{% extends 'twistter/base.html' %}
+{% load static %}
+
+{% block content %}
+	<h1>
+		{{ user.username|lower}}'s Follows
+	</h1>
+	<br/>
+	{% if profiles %}
+		{% for profile in user.profile.follows.all %}
+			{% if profile.user == user %}
+				<span></span>
+			{% else %}
+				<div class="card mb-3" style="max-width: 540px;">
+				  <div class="row g-0">
+				    {% if profile.profile_image %}
+						<div class="col-md-4">
+				            <img src="{{ profile.profile_image.url }}" class="img-fluid rounded-start" alt="Profile picture">
+				        </div>
+					{% else %}
+					    <div class="col-md-4">
+						    <img src="{% static 'images/default_profile_pic.png' %}" class="img-fluid rounded-start" alt="Profile picture">
+					    </div>
+					{% endif %}
+				    <div class="col-md-8">
+				      <div class="card-body">
+				        <h5 class="card-title">{{ profile.user.username }}</h5>
+				        <a class="card-text" href="{% url 'profile' profile.user.id%}">@{{ profile.user.username|lower }} </a>
+				        <p class="card-text"><small class="text-body-secondary">Last Updated: {{ profile.date_modified }}</small></p>
+					    <br>
+					    {% if profile in profiles.followed_by.all %}
+			                <a href="{% url 'unfollow' profile.user.id %}">U</a> <br>
+			            {% else %}
+			                <a href="{% url 'follow' profile.user.id %}">F</a> <br>
+			            {% endif %}
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				<br/>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+{% endblock %}
+

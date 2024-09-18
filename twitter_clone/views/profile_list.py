@@ -8,5 +8,31 @@ def profile_list(request):
             'profiles': profiles
         })
     else:
-        messages.warning(request, 'Você precisa está logado para acessar este conteúdo!')
-        return redirect('home')
+        messages.warning(request, 'You must be logged in to view this page.')
+        return redirect('login')
+
+
+def unfollow(request, pk):
+    if request.user.is_authenticated:
+        profile = Profile.objects.get(user_id=pk)
+        request.user.profile.follows.remove(profile)
+        request.user.profile.save()
+
+        messages.warning(request, f'You unfollowed @{profile.user.username.lower()}')
+        return redirect(request.META.get("HTTP_REFERER"))
+    else:
+        messages.warning(request, 'You must be logged in to view this page.')
+        return redirect('login')
+
+
+def follow(request, pk):
+    if request.user.is_authenticated:
+        profile = Profile.objects.get(user_id=pk)
+        request.user.profile.follows.add(profile)
+        request.user.profile.save()
+
+        messages.warning(request, f'You followed @{profile.user.username.lower()}')
+        return redirect(request.META.get("HTTP_REFERER"))
+    else:
+        messages.warning(request, 'You must be logged in to view this page.')
+        return redirect('login')
