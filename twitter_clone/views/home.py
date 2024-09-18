@@ -16,7 +16,8 @@ def home(request):
                 messages.warning(request, 'Your Twist Has Been Posted!')
                 return redirect('home')
 
-        twists = Twist.objects.all().order_by('-created_at')
+        twists = Twist.objects.filter(user__profile__followed_by=request.user.profile).order_by('-created_at')
+
         return render(request, 'twistter/home.html', {
             'twists': twists,
             'form': form
