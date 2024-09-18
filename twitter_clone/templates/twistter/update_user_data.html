@@ -7,8 +7,8 @@
 			{% csrf_token %}
 			{{ user_form.as_p }} <br>
 			<br>
-			<button type="submit" class="btn btn-outline-secondary">Update</button>
-			<button type="button" class="btn btn-outline-secondary">
+			<button type="submit" class="btn btn-outline-primary">Update</button>
+			<button type="button" class="btn btn-outline-warning">
 				<a href="{% url 'profile' request.user.id%}">
 					Cancel
 				</a>

@@ -11,19 +11,54 @@
 				</h1>
 				<br>
 				
-				<div class="alert alert-dark" role="alert">
-					<div class="container">
-						<div class="row">
-							<div class="col-12">
-								<form method="POST">
-									{% csrf_token %}
-									{{ form.as_p }}
-									<button type="submit" class="btn btn-outline-secondary">Twist!</button>
-								</form>
+				<div class="twist_container">
+						<div class="container">
+							<div class="row">
+								<div class="col-1">
+									{% if profile.profile_image %}
+										<img class="twist_profile_img rounded-circle" src="{{ profile.profile_image.url }}">
+									{% else %}
+										<img class="twist_profile_img rounded-circle" src="{% static 'images/default_profile_pic.jpg' %}"  alt="Profile picture">
+									{% endif %}
+								</div>
+								<div class="col-5">
+									{{ twist.user.first_name }} {{ twist.user.last_name }}
+									<small class="text-muted">
+										<a class="card-text" href="{% url 'profile' twist.user.id%}">@{{ twist.user.username|lower }}</a>
+										{{ twist.created_at }}
+									</small>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 twist_body">
+									<form method="POST" class="twist_text">
+										{% csrf_token %}
+										{{ form.as_p }}
+									</form>
+								</div>
+							</div>
+							<div class="row twist_like_box">
+								<div class="col-3">
+									{% if user in twist.likes.all %}
+											<a class="twist_like" href="{% url 'twist-like' twist.id %}"> <i class="bi bi-suit-heart-fill"></i> </a> {{ twist.number_of_likes }}
+									{% else %}
+											<a class="twist_like" href="{% url 'twist-like' twist.id %}"> <i class="bi bi-suit-heart"></i> </a> {{ twist.number_of_likes }}
+									{% endif %}
+								</div>
+								<div class="col-3">
+									<a class='twist_share' href="{% url 'twist-share' twist.id %}"> <i class="bi bi-box-arrow-in-up-right"></i> </a>
+								</div>
+								{% if request.user.username == twist.user.username %}
+									<div class="col-3">
+										<a class='twist_delete' href="{% url 'delete-twist' twist.id %}"> <i class="bi bi-trash"></i></a>
+									</div>
+									<div class="col-3">
+										<a class='twist_edit' href="{% url 'edit-twist' twist.id %}"> <i class="bi bi-pencil-square"></i></a>
+									</div>
+								{% endif %}
 							</div>
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 	</div>

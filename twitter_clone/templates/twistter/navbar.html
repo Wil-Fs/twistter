@@ -27,20 +27,20 @@
 	    <a href="" class="profile_img_btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
 	      {% if user.profile.profile_image %}
 		    
-		    <img class="twist_profile_img rounded-circle" src="{{ user.profile.profile_image.url }}">
+		    <img class="twist_profile_nav_img rounded-circle" src="{{ user.profile.profile_image.url }}">
 		    
 		  {% else %}
 		    
-		    <img src="{% static 'images/default_profile_pic.jpg' %}" class="twist_profile_img rounded-circle" alt="Profile picture">
+		    <img src="{% static 'images/default_profile_pic.jpg' %}" class="twist_profile_nav_img rounded-circle" alt="Profile picture">
 		    
 	      {% endif %}
 	    </a>
 	    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 	      <div class="offcanvas-header">
 		    {% if user.profile.profile_image %}
-		        <img class="twist_profile_img rounded-circle" src="{{ user.profile.profile_image.url }}">
+		        <img class="twist_profile_nav_img rounded-circle" src="{{ user.profile.profile_image.url }}">
 		    {% else %}
-		        <img src="{% static 'images/default_profile_pic.jpg' %}" class="twist_profile_img rounded-circle" alt="Profile picture">
+		        <img src="{% static 'images/default_profile_pic.jpg' %}" class="twist_profile_nav_img rounded-circle" alt="Profile picture">
 		    {% endif %}
 			    <h5 class="offcanvas-title profile_name" id="offcanvasNavbarLabel"> @{{ user }} </h5>
 			    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>

@@ -30,6 +30,11 @@ html, body {
 .size_big_icons {
     font-size: 26px;
 }
+
+.no_resize {
+    resize: none;
+}
+
 /* twist_style */
 
 .decoration_none {
@@ -58,7 +63,8 @@ html, body {
     min-height: 124px;
     height: auto;
     margin: 20px 0 0 0;
-    background-color: black;
+    background-color: #fff;
+    padding: 16px 10px;
 }
 
 .twist_body {
@@ -142,6 +148,14 @@ text-area {
     width: 100%;
     height: 40px;
     margin: 10px 6px;
+}
+
+
+.twist_profile_nav_img {
+    max-width: 58px;
+    width: 100%;
+    height: 40px;
+    margin: 10px 10px 10px 0px;
 }
 
 .title_profile {

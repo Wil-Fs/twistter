@@ -62,7 +62,7 @@
 															Unfollow @{{ profile.user.username|lower }}
 														</button>
 													{% else %}
-														<button class="btn btn-outline-secondary" name="follow" value="follow" type="submit">
+														<button class="btn btn-outline-primary" name="follow" value="follow" type="submit">
 															Follow @{{ profile.user.username|lower }}
 														</button>
 													{% endif %}
@@ -169,7 +169,7 @@
 						  </div>
 						  <div class="card-body">
 							    
-							    {% for following in profile.followed_by.all %}
+							    {% for following in profile.followed_by.all|slice:3 %}
 									{% if following.user == profile.user %}
 										<span></span>
 									{% else %}
