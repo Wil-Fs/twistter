@@ -79,12 +79,15 @@
 {% else %}
 
 	
-	<nav class="navbar bg-body-tertiary fixed-top">
+	<nav class="navbar bg-body-tertiary fixed-top nav_less_padding">
 	  <div class="container-fluid row">
-	    <a class="navbar-brand col-9" href="{% url 'home' %}">Twistter</a>
+	    <div class="col-6">
+			<img class="main_icon" src="{% static 'images/twistter_icon.png' %}">
+	        <a class="navbar-brand" href="{% url 'home' %}">Twistter</a>
+		</div>
 		  <div class="col-2 container-fluid row">
-			  <span class="col-6">New Here?</span>
-			  <button class="navbar-toggler col-6" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+			  <span>New Here?</span>
+			  <button class="btn btn-outline-primary button_register" type="button">
 				  <a class="nav-link active" aria-current="page" href="{% url 'register' %}">Sign Up</a>
 			  </button>
 		  </div>
