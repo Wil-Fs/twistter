@@ -6,9 +6,30 @@
     box-size: border-box;
     resize: none;
     list-style: none;
-    background-color: #fff;
+    background-color: transparent;
+    color: #000;
 }
 
+
+body {
+    background: linear-gradient(to bottom, #a2a2a2,#a1a1a1);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+html, body {
+ min-height: 100vh;
+ height: auto;
+}
+
+.size_med_icons {
+    font-size: 14px;
+}
+
+.size_big_icons {
+    font-size: 26px;
+}
 /* twist_style */
 
 .decoration_none {
@@ -87,6 +108,15 @@ twist_like_box {
 
 /* navbar.html */
 
+.search_for_item {
+    margin: 10px 8px;
+}
+
+.main_icon {
+    max-width: 40px;
+    width:100%;
+}
+
 /* profile.html */
 
 text-area {
@@ -159,6 +189,26 @@ text-area {
 }
 
 /* profile_list.html */
+
+.profiles_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 40px;
+}
+
+.item_grid {
+    display: flex;
+}
+
+.box_profile_list_item {
+    margin-left: 10px;
+}
+
+.box_information {
+    border-left: 3px solid black;
+    margin: 0 10px;
+}
 
 /* register.html */
 

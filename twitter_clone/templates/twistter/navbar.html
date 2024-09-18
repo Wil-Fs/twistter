@@ -3,20 +3,23 @@
 	
 	<nav class="navbar bg-body-tertiary fixed-top">
 	  <div class="container-fluid">
-	    <a class="navbar-brand" href="{% url 'home' %}">Twistter</a>
+		<div>
+			<img class="main_icon" src="{% static 'images/twistter_icon.png' %}">
+	        <a class="navbar-brand" href="{% url 'home' %}">Twistter</a>
+		</div>
 		<div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Search For
             </a>
             <ul class="dropdown-menu">
-              <li>
-		          <a href="{% url 'search-user' %}">
-			        <button class="btn btn-outline-success" type="button">Search Profiles</button>
+              <li class="search_for_item">
+		          <a class="decoration_none" href="{% url 'search-user' %}">
+			         <i class="bi bi-person-bounding-box"></i> People
 		          </a>
 	          </li>
-              <li>
-		          <a href="{% url 'search-twistt' %}">
-			        <button class="btn btn-outline-success" type="button">Search</button>
+              <li class="search_for_item">
+		          <a class="decoration_none" href="{% url 'search-twistt' %}">
+			        <i class="bi bi-card-list"></i> Twist
 		          </a>
               </li>
             </ul>
@@ -24,20 +27,20 @@
 	    <a href="" class="profile_img_btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
 	      {% if user.profile.profile_image %}
 		    
-		    <img class="profile_img_nav" src="{{ user.profile.profile_image.url }}">
+		    <img class="twist_profile_img rounded-circle" src="{{ user.profile.profile_image.url }}">
 		    
 		  {% else %}
 		    
-		    <img src="{% static 'images/default_profile_pic.png' %}" class="profile_img_nav" alt="Profile picture">
+		    <img src="{% static 'images/default_profile_pic.jpg' %}" class="twist_profile_img rounded-circle" alt="Profile picture">
 		    
 	      {% endif %}
 	    </a>
 	    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 	      <div class="offcanvas-header">
 		    {% if user.profile.profile_image %}
-		        <img class="profile_img_nav" src="{{ user.profile.profile_image.url }}">
+		        <img class="twist_profile_img rounded-circle" src="{{ user.profile.profile_image.url }}">
 		    {% else %}
-		        <img src="{% static 'images/default_profile_pic.png' %}" class="profile_img_nav" alt="Profile picture">
+		        <img src="{% static 'images/default_profile_pic.jpg' %}" class="twist_profile_img rounded-circle" alt="Profile picture">
 		    {% endif %}
 			    <h5 class="offcanvas-title profile_name" id="offcanvasNavbarLabel"> @{{ user }} </h5>
 			    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>

@@ -17,7 +17,7 @@
 										{% if profile.profile_image %}
 										    <img class="profile_img rounded-circle" src="{{ profile.profile_image.url }}">
 										{% else %}
-										    <img class="profile_img rounded-circle" src="{% static 'images/default_profile_pic.png' %}" alt="Profile picture">
+										    <img class="profile_img rounded-circle" src="{% static 'images/default_profile_pic.jpg' %}" alt="Profile picture">
 									    {% endif %}
 										<div>
 											<h2 class="title_profile">
@@ -31,14 +31,14 @@
 								</div>
 							{% else %}
 								<div class="container_info_box">
-									<div class="background_profile" style="background-image: url({% static 'images/background_default.jpg' %});">
+									<div class="background_profile" style="background-image: url({% static 'images/default_cover2.jpg' %});">
 									
 									</div>
 									<div class="profile_info_box">
 										{% if profile.profile_image %}
 										    <img class="profile_img rounded-circle" src="{{ profile.profile_image.url }}">
 										{% else %}
-										    <img class="profile_img rounded-circle" src="{% static 'images/default_profile_pic.png' %}" alt="Profile picture">
+										    <img class="profile_img rounded-circle" src="{% static 'images/default_profile_pic.jpg' %}" alt="Profile picture">
 									    {% endif %}
 										<div class="follow_box">
 											<div>
@@ -83,13 +83,13 @@
 											{% if profile.profile_image %}
 												<img class="twist_profile_img rounded-circle" src="{{ profile.profile_image.url }}">
 											{% else %}
-												<img class="twist_profile_img rounded-circle" src="{% static 'images/default_profile_pic.png' %}"  alt="Profile picture">
+												<img class="twist_profile_img rounded-circle" src="{% static 'images/default_profile_pic.jpg' %}"  alt="Profile picture">
 											{% endif %}
 										</div>
 										<div class="col-5">
 											{{ twist.user.first_name }} {{ twist.user.last_name }}
 											<small class="text-muted">
-												<a class="card-text" href="{% url 'profile' twist.user.id%}">@{{ twist.user.username|lower }}</a>
+												<a class="card-text decoration_none" href="{% url 'profile' twist.user.id%}">@{{ twist.user.username|lower }}</a>
 												{{ twist.created_at }}
 											</small>
 										</div>
@@ -132,9 +132,15 @@
 						About me:
 					</h4>
 					
-					<div class="profile_bio">
-						{{ profile.bio }}
-					</div>
+					{% if profile.bio is not None %}
+						<div class="profile_bio">
+							{{ profile.bio }}
+						</div>
+					{% else %}
+						<div class="profile_bio">
+							<i class="bi bi-wind"></i> Nothing Here! <i class="bi bi-tornado"></i>
+						</div>
+					{% endif %}
 					
 					
 					<div class="card">
