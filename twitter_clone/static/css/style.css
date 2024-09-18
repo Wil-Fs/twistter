@@ -1,4 +1,11 @@
-
+* {
+    margin:0;
+    padding:0;
+    box-size:border-box;
+    resize: none;
+    list-style: none;
+    background-color: #000;
+}
 
 .profile_img {
     max-width: 100px;
