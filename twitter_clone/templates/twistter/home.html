@@ -1,6 +1,67 @@
 {% extends 'twistter/base.html' %}
+{% load static %}
 {% block content %}
-	<h1>
-		{{ text }}
-	</h1>
+	
+	<div class="container text-center">
+		<div class="row">
+			<div class="col-8">
+				<h1>Twists</h1>
+				<br>
+				{% for twist in twists %}
+					<div class="alert alert-dark" role="alert">
+						<div class="container">
+							<div class="row">
+										<div class="col-1">
+											{% if twist.user.profile.profile_image %}
+												<img class="profile_img" src="{{ twist.user.profile.profile_image.url }}">
+											{% else %}
+												<img src="{% static 'images/default_profile_pic.png' %}" class="profile_img" alt="Profile picture">
+											{% endif %}
+										</div>
+										<div class="col-5">
+											{{ twist.user.first_name }} {{ twist.user.last_name }}
+											<small class="text-muted">
+												<a class="card-text" href="{% url 'profile' twist.user.id%}">@{{ twist.user.username|lower }}</a>
+												{{ twist.created_at }}
+											</small>
+										</div>
+									</div>
+							<div class="row">
+								<div class="col-12">
+									{{ twist.body }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-4">
+									{% if user in twist.likes.all %}
+											<a href="{% url 'twist-like' twist.id %}">Unlike:</a> {{ twist.number_of_likes }}
+									{% else %}
+											<a href="{% url 'twist-like' twist.id %}">Like:</a> {{ twist.number_of_likes }}
+									{% endif %}
+								</div>
+								<div class="col-4">
+									<a href="{% url 'twist-share' twist.id %}">Share:</a>
+								</div>
+								{% if request.user.username == twist.user.username %}
+									<div class="col-4">
+										<a href="{% url 'delete-twist' twist.id %}">Delete:</a>
+									</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			
+			<div class="col-4">
+				<form method="POST">
+					{% csrf_token %}
+					{{ form.as_p }}
+					<button type="submit" class="btn btn-outline-secondary">Twist!</button>
+				</form>
+			</div>
+		</div>
+		
+	</div>
 {% endblock %}
+
