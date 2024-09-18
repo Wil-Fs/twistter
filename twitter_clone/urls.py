@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (home, profile_list, profile, login_user, logout_user, register_user,
                     update_user, twist_like, twist_share, unfollow, follow, followers, follows,
-                    delete_twist)
+                    delete_twist, edit_twist, search_twistt, search_user)
 
 urlpatterns = [
     path("", home, name='home'),
@@ -18,4 +18,7 @@ urlpatterns = [
     path('unfollow/<pk>', unfollow, name='unfollow'),
     path('follow/<pk>', follow, name='follow'),
     path('delete_twist/<pk>', delete_twist, name='delete-twist'),
+    path('edit_twist/<pk>', edit_twist, name='edit-twist'),
+    path('search_twistt', search_twistt, name='search-twistt'),
+    path('search_user', search_user, name='search-user'),
 ]
