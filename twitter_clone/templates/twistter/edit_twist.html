@@ -16,8 +16,8 @@
 						<div class="container">
 							<div class="row">
 								<div class="col-1">
-									{% if profile.profile_image %}
-										<img class="twist_profile_img rounded-circle" src="{{ profile.profile_image.url }}">
+									{% if twist.user.profile.profile_image %}
+										<img class="twist_profile_img rounded-circle" src="{{ twist.user.profile.profile_image.url }}">
 									{% else %}
 										<img class="twist_profile_img rounded-circle" src="{% static 'images/default_profile_pic.jpg' %}"  alt="Profile picture">
 									{% endif %}
