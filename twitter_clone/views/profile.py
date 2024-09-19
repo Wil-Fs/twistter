@@ -3,7 +3,7 @@ from django.contrib import messages
 from ..models import Profile, Twist
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from ..forms import SignUpForm, ProfilePicForm, UpdateProfileForm, UpdateDataProfileForm
+from ..forms import SignUpForm, ProfilePicForm, UpdateProfileForm, UpdateDataProfileForm, ProfileCoverForm
 
 
 def profile(request, user):
@@ -38,6 +38,7 @@ def update_user(request):
         current_profile = Profile.objects.get(user__id=request.user.id)
         user_form = UpdateProfileForm(request.POST or None, request.FILES or None, instance=current_user)
         profile_user_form = ProfilePicForm(request.POST or None, request.FILES or None, instance=current_profile)
+        profile_user_cover_form = ProfileCoverForm(request.POST or None, request.FILES or None, instance=current_profile)
 
         if user_form.is_valid() and profile_user_form.is_valid():
             user_form.save()
@@ -48,7 +49,8 @@ def update_user(request):
 
         return render(request, 'twistter/update_user.html', {
             'user_form': user_form,
-            'profile_user_form': profile_user_form
+            'profile_user_form': profile_user_form,
+            'profile_user_cover_form': profile_user_cover_form,
         })
     else:
         messages.warning(request, 'You must be logged in to view that page!')
