@@ -6,7 +6,7 @@ class ProfilePicForm(forms.ModelForm):
     profile_image = forms.ImageField(label='Profile Picture', widget=forms.FileInput(attrs={
         "class":"form-control"
     }))
-    profile_background = forms.ImageField(label='Profile Picture', widget=forms.FileInput(attrs={
+    profile_background = forms.ImageField(label='Profile Cover', widget=forms.FileInput(attrs={
         "class": "form-control"
     }))
     bio = forms.CharField(label="Profile bio", widget=forms.Textarea(attrs={
