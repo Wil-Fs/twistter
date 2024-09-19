@@ -43,6 +43,7 @@ def update_user(request):
         if user_form.is_valid() and profile_user_form.is_valid():
             user_form.save()
             profile_user_form.save()
+            profile_user_cover_form.save()
             login(request, current_user)
             messages.warning(request, f'@{request.user.username.lower()}, your profile has been updated!')
             return redirect('home')
