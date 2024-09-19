@@ -35,6 +35,13 @@ html, body {
     resize: none;
 }
 
+.btn_zero {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+}
+
 /* twist_style */
 
 .decoration_none {
