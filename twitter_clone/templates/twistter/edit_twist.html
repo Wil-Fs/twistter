@@ -12,6 +12,7 @@
 				<br>
 				
 				<div class="twist_container">
+					<form method="POST" class="twist_text">
 						<div class="container">
 							<div class="row">
 								<div class="col-1">
@@ -31,10 +32,10 @@
 							</div>
 							<div class="row">
 								<div class="col-12 twist_body">
-									<form method="POST" class="twist_text">
+									
 										{% csrf_token %}
 										{{ form.as_p }}
-									</form>
+									
 								</div>
 							</div>
 							<div class="row twist_like_box">
@@ -53,12 +54,15 @@
 										<a class='twist_delete' href="{% url 'delete-twist' twist.id %}"> <i class="bi bi-trash"></i></a>
 									</div>
 									<div class="col-3">
-										<a class='twist_edit' href="{% url 'edit-twist' twist.id %}"> <i class="bi bi-pencil-square"></i></a>
+										<button class="btn_zero" type="submit">
+											<a class='twist_edit' href="#"><i class="bi bi-check2-all"></i></i></a>
+										</button>
 									</div>
 								{% endif %}
 							</div>
 						</div>
-					</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
